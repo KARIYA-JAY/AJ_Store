@@ -1,20 +1,30 @@
 import React from 'react'
-
+import { NavLink } from 'react-router-dom'
+import { assets } from '../assets/assets'
+import { useAppContext } from '../context/Appcontext'
 export const Navbar = () => {
 
     const [open, setOpen] = React.useState(false)
+    const {user, setUser , setShowUSerLogin , navigate} = useAppContext ();
+
+    const logout = async ()=>{
+        setUser(null);
+        navigate('/ ')
+    }
+
   return (
     <nav className="flex items-center justify-between px-6 md:px-16 lg:px-24 xl:px-32 py-4 border-b border-gray-300 bg-white relative transition-all">
 
-            <a href="#">
-                <img className="h-9" src="https://raw.githubusercontent.com/prebuiltui/prebuiltui/main/assets/dummyLogo/dummyLogoColored.svg" alt="dummyLogoColored" />
-            </a>
+            <NavLink to = '/'>
+                <img className="h-9" src={assets.logo} alt="logo" />
+            </NavLink>
 
             {/* Desktop Menu */}
             <div className="hidden sm:flex items-center gap-8">
-                <a href="#">Home</a>
-                <a href="#">About</a>
-                <a href="#">Contact</a>
+                <NavLink to = '/'>Home</NavLink>
+                <NavLink to = '/products'>All Products</NavLink>
+                <NavLink to = '/contact'>Contact</NavLink>
+                
 
                 <div className="hidden lg:flex items-center text-sm gap-2 border border-gray-300 px-3 rounded-full">
                     <input className="py-1.5 w-full bg-transparent outline-none placeholder-gray-500" type="text" placeholder="Search products" />
@@ -43,17 +53,30 @@ export const Navbar = () => {
                     <rect x="8" y="6" width="13" height="1.5" rx=".75" fill="#426287" />
                     <rect x="6" y="13" width="15" height="1.5" rx=".75" fill="#426287" />
                 </svg>
-            </button>
+            </button> 
 
             {/* Mobile Menu */}
-            <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
-                <a href="#" className="block">Home</a>
-                <a href="#" className="block">About</a>
-                <a href="#" className="block">Contact</a>
-                <button className="cursor-pointer px-6 py-2 mt-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full text-sm">
+            { open &&( 
+                <div className={`${open ? 'flex' : 'hidden'} absolute top-[60px] left-0 w-full bg-white shadow-md py-4 flex-col items-start gap-2 px-5 text-sm md:hidden`}>
+               <NavLink to = "/" onClick={() => setOpen(false)}>Home</NavLink>
+                <NavLink to = "/products" onClick={() => setOpen(false)}>All Products</NavLink>
+                { user &&
+                <NavLink to = "/contact"  onClick={() => setOpen(false)}>My Orders</NavLink>
+                }
+                 <NavLink to = "/contact"  onClick={() => setOpen(false)}>Contact</NavLink>
+
+                 {!user ?(<button onClick={() =>{
+                    setOpen(false);
+                    setShowUSerLogin(true)
+                 }} className="cursor-pointer px-6 py-2 mt-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full text-sm">
                     Login
                 </button>
-            </div>
+                ) : (
+                    <button onClick={logout} className="cursor-pointer px-6 py-2 mt-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full text-sm">
+                    Logout
+                </button>)} 
+                
+            </div>)}
 
         </nav>
   )
