@@ -65,7 +65,8 @@ export const Navbar = () => {
                 }
                  <NavLink to = "/contact"  onClick={() => setOpen(false)}>Contact</NavLink>
 
-                 {!user ?(<button onClick={() =>{
+                 {!user ?(
+                    <button onClick={() =>{
                     setOpen(false);
                     setShowUSerLogin(true)
                  }} className="cursor-pointer px-6 py-2 mt-2 bg-indigo-500 hover:bg-indigo-600 transition text-white rounded-full text-sm">
