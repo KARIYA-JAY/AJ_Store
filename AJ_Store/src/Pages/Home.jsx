@@ -2,6 +2,7 @@ import React from "react";
 import MainBanner from "../components/MainBannar";
 import { BottomBanner } from "../components/BottomBanner";
 import Categories from "../components/Categories";
+import { NewsLetter } from "../components/NewsLetter";
 
 
 const Home = () => {
@@ -10,6 +11,10 @@ const Home = () => {
            <MainBanner /> 
            <Categories/>
            <BottomBanner />
+           <div className="w-fit mx-auto mt-10">
+           <NewsLetter/>
+           </div>
+          
         </div>
     )
 }
