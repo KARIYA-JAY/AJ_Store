@@ -17,7 +17,8 @@ export default function Categories() {
                         navigate(`/products/${category.path.toLowerCase()}`);
                         scrollTo(0,0)
                      }}>
-                    <img src={category.image} alt={category.text} className="group-hover:scale-108 transition max-w-28" />
+                    <img src={category.image} alt={category.text} className="transition group-hover:scale-110 max-w-28"
+/>
                     <p className="text-sm font-medium">{category.text}</p>
                 </div>
                 ))}

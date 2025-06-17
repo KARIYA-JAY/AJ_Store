@@ -11,7 +11,7 @@ export const BottomBanner = () => {
         <div>
           <h1 className='text-2xl md:text-3xl font-semibold mb-6 text-primary '>Why AJ Store is the best.</h1>
         </div>
-        <div className="w-fit mx-auto mt-10">
+        <div className="">
             {features.map((feature, index) => (
               <div
                 key={index}
