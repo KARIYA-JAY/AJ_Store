@@ -7,6 +7,7 @@ import { Footer } from "./components/Footer";
 import { useAppContext } from './context/Appcontext'
 import { Login } from './components/Login'
 import { AllProduct } from './Pages/AllProduct'
+import { Cart } from './Pages/Cart'
 
 
 export const App = () => {
@@ -23,6 +24,7 @@ export const App = () => {
       <Routes>
         <Route path = '/' element ={<Home/>} ></Route>
         <Route path = '/products' element ={<AllProduct/>} ></Route>
+        <Route path = '/cart' element ={<Cart/>} ></Route>
       </Routes>
     </div>
      {!isSellerPath && <Footer/>}
