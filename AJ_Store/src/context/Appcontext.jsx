@@ -5,14 +5,19 @@ import toast from "react-hot-toast";
 
 export const AppContext = createContext();
 
-export const AppContextProvider = ({children }) =>{
+export const AppContextProvider = ({children}) =>{
 
     const currency = import.meta.VITE_CURRENCY;
 
     const navigate = useNavigate();
-    const [user, setUser] = useState(null)
+    const [user, setUser] = useState(false)
     const [Isseller, setIsSeller] = useState(false)
-    const [showUserLogin, setShowUSerLogin] = useState(false)
+
+
+    const [searchQuery, setsearchQuery] = useState({})
+
+    
+    const [showUserLogin, setShowUserLogin] = useState(false)
     const [products,setProducts] = useState([])
 
     const [cartItems,setCartItems] = useState({})
@@ -60,11 +65,11 @@ export const AppContextProvider = ({children }) =>{
         fetchProducts() 
     },[])
      
-    const value = {navigate,user, setUser,Isseller, setIsSeller,showUserLogin , setShowUSerLogin , products,currency, addToCart
-        ,updateCartItem ,removeFromCart , cartItems 
+    const value = {navigate,user, setUser,Isseller, setIsSeller,showUserLogin , setShowUserLogin , products,currency, addToCart
+        ,updateCartItem ,removeFromCart , cartItems ,searchQuery,setsearchQuery
     }
     return <AppContext.Provider value={value}>
-        {children }
+        {children}
     </AppContext.Provider>
 } 
 
