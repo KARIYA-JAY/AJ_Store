@@ -12,6 +12,7 @@ import { useAppContext } from './context/Appcontext'
 import { Login } from './components/Login'
 import { AllProduct } from './Pages/AllProduct'
 import { Cart } from './Pages/Cart'
+import { MyOrders } from './components/MyOrders'
 
 
 export const App = () => {
@@ -33,6 +34,7 @@ export const App = () => {
 
         <Route path = '/products' element ={<AllProduct/>} ></Route>
         <Route path = '/cart' element ={<Cart/>} ></Route>
+        <Route path = '/my-orders' element ={<MyOrders/>} ></Route>
 
       </Routes>
     </div>
